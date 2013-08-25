@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Videogular by 2fdevs</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Videogular</h1>
+        <p class="header">An HTML5 video player for AngularJS</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/2fdevs/videogular/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/2fdevs/videogular/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/2fdevs/videogular">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/2fdevs">2fdevs</a></p>
+
+
+      </header>
+      <section>
+        <h2>
+<a name="videogular" class="anchor" href="#videogular"><span class="octicon octicon-link"></span></a>Videogular</h2>
+
+<p>Videogular is an HTML5 video player for AngularJS. Videogular is a wrapper over the HTML5 video tag, so you just could add whatever you want. This provides a very powerful, but simple to use solution, for everybody.</p>
+
+<p>You could see a demo here: <a href="http://twofuckingdevelopers.com/examples/videogular/examples/">http://twofuckingdevelopers.com/examples/videogular/examples/</a></p>
+
+<p><strong>Videogular is currently under development</strong> and now we have a few CSS problems on IE10.</p>
+
+<h2>
+<a name="why-videogular" class="anchor" href="#why-videogular"><span class="octicon octicon-link"></span></a>Why Videogular?</h2>
+
+<p>We're developing Videogular focusing on mobile devices and HTML5 video special capabilities. Videogular brings to you this key features:</p>
+
+<ul>
+<li>
+<strong>Bindable properties</strong>: Videogular's directives are bindable, just <a href="http://twofuckingdevelopers.com/examples/videogular/examples/">try the demo</a> and play with bindings.</li>
+<li>
+<strong>Extendable through plugins</strong>: Thanks to our API you can develop your own plugins.</li>
+<li>
+<strong>Theme based</strong>: Customize it with your own themes and change between them on the fly.</li>
+<li>
+<strong>Native fullscreen support</strong>: Enjoy with native fullscreen support for Chrome, Firefox, Safari, iOS and Chrome for Android.</li>
+<li>
+<strong>Mobile first</strong>: Videogular can detect mobile devices to show/hide components in case that aren't supported.</li>
+</ul><h2>
+<a name="how-to-use-videogular" class="anchor" href="#how-to-use-videogular"><span class="octicon octicon-link"></span></a>How to use Videogular</h2>
+
+<p>To start using Videogular, just create a <code>DIV</code> with the <code>videogular</code> attribute and the <code>video</code> tag inside. In AngularJS the HTML5 <code>poster</code> video attribute is not supported, so you could use <code>vg-poster</code> to add your image to your video tag. With <code>vg-width</code> and <code>vg-height</code> directives you could set an Integer value or a binding to a scope variable. You don't need to set a width and height to video tag, Videogular will do that for you.</p>
+
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">videogular</span> <span class="na">vg-width=</span><span class="s">"width"</span> <span class="na">vg-height=</span><span class="s">"height"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;video</span> <span class="na">class=</span><span class="s">'videoPlayer'</span> <span class="na">controls</span> <span class="na">preload=</span><span class="s">'none'</span> <span class="na">vg-poster=</span><span class="s">'assets/images/oceans-clip.png'</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">'assets/videos/oceans-clip.mp4'</span> <span class="na">type=</span><span class="s">'video/mp4'</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">'assets/videos/oceans-clip.webm'</span> <span class="na">type=</span><span class="s">'video/webm'</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">'assets/videos/oceans-clip.ogv'</span> <span class="na">type=</span><span class="s">'video/ogg'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/video&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+<p>Because <code>videogular</code> is an HTML5 video player for AngularJS it works (obviously) with all AngularJS directives.</p>
+
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">videogular</span> <span class="na">vg-width=</span><span class="s">"width"</span> <span class="na">vg-height=</span><span class="s">"height"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;video</span> <span class="na">class=</span><span class="s">'videoPlayer'</span> <span class="na">preload=</span><span class="s">'none'</span> <span class="na">vg-poster=</span><span class="s">'{{ data.poster }}'</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;source</span> <span class="na">ng-repeat=</span><span class="s">'media in data.media'</span> <span class="na">ng-src=</span><span class="s">'{{ media.url }}'</span> <span class="na">type=</span><span class="s">'{{ media.type }}'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/video&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+<h2>
+<a name="plugins" class="anchor" href="#plugins"><span class="octicon octicon-link"></span></a>Plugins</h2>
+
+<p>With Videogular you can write your own plugins through a simple API based in events. Plugins should be directives and they should communicate with <code>videogular</code> directive through an API based in events.</p>
+
+<h2>
+<a name="api-events" class="anchor" href="#api-events"><span class="octicon octicon-link"></span></a>API Events</h2>
+
+<ul>
+<li>
+<strong>VG_EVENTS.ON_PLAY</strong>: Triggered when video plays.</li>
+<li>
+<strong>VG_EVENTS.ON_PAUSE</strong>: Triggered when video is paused.</li>
+<li>
+<strong>VG_EVENTS.ON_PLAY_PAUSE</strong>: Triggered when play/pause video state toggles.</li>
+<li>
+<strong>VG_EVENTS.ON_START_PLAYING</strong>: Triggered when video starts playing after buffer.</li>
+<li>
+<strong>VG_EVENTS.ON_COMPLETE</strong>: Triggered when video is completed</li>
+<li>
+<strong>VG_EVENTS.ON_SET_STATE</strong>: Triggered when state changes. Possible values could be "play", "pause" or "stop".</li>
+<li>
+<strong>VG_EVENTS.ON_SET_VOLUME</strong>: Triggered when volume changes.</li>
+<li>
+<strong>VG_EVENTS.ON_TOGGLE_FULLSCREEN</strong>: Triggered when fullscreen changes.</li>
+<li>
+<strong>VG_EVENTS.ON_ENTER_FULLSCREEN</strong>: Triggered when video enters in fullscreen.</li>
+<li>
+<strong>VG_EVENTS.ON_EXIT_FULLSCREEN</strong>: Triggered when video exits from fullscreen.</li>
+<li>
+<strong>VG_EVENTS.ON_BUFFERING</strong>: Triggered when video is buffering.</li>
+<li>
+<strong>VG_EVENTS.ON_UPDATE_TIME</strong>: Triggered when video progress updates.</li>
+<li>
+<strong>VG_EVENTS.ON_UPDATE_SIZE</strong>: Triggered when video size updates.</li>
+<li>
+<strong>VG_EVENTS.ON_PLAYER_READY</strong>: Triggered when DOM elements are ready. Very useful to initialize plugins.</li>
+</ul><h2>
+<a name="plugin-example" class="anchor" href="#plugin-example"><span class="octicon octicon-link"></span></a>Plugin example</h2>
+
+<p>Currently you will find a <code>plugins</code> folder with some source code to inspire you, however, you could see how easy is to write your own plugin with this example:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">myVGPlugin</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">"com.2fdevs.videogular.plugins.myPlugin"</span><span class="p">,</span> <span class="p">[]);</span>
+<span class="nx">myVGPlugin</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s2">"vgMyPlugin"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">VG_EVENTS</span><span class="p">){</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">restrict</span><span class="o">:</span> <span class="s2">"E"</span><span class="p">,</span>
+            <span class="nx">template</span><span class="o">:</span> <span class="s2">"&lt;div&gt;my videogular plugin&lt;/div&gt;"</span><span class="p">,</span>
+            <span class="nx">link</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">function</span> <span class="nx">onChangeState</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"state changed to "</span> <span class="o">+</span> <span class="nx">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+                <span class="p">}</span>
+
+                <span class="nx">scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="nx">VG_EVENTS</span><span class="p">.</span><span class="nx">ON_SET_STATE</span><span class="p">,</span> <span class="nx">onChangeState</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="adding-a-plugin" class="anchor" href="#adding-a-plugin"><span class="octicon octicon-link"></span></a>Adding a plugin</h2>
+
+<p>To add a plugin just add your directives to your HTML. This is an example of a Videogular player:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">videogular</span> <span class="na">vg-width=</span><span class="s">"400"</span> <span class="na">vg-height=</span><span class="s">"300"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;vg</span><span class="na">-buffering</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-buffering&gt;
+    <span class="nt">&lt;vg</span><span class="na">-overlayPlay</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-overlayPlay&gt;
+    <span class="nt">&lt;vg</span><span class="na">-myplugin</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-myplugin&gt;
+
+    <span class="nt">&lt;vg</span><span class="na">-controls</span> <span class="na">vg-autohide=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;vg</span><span class="na">-playpauseButton</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-playpauseButton&gt;
+        <span class="nt">&lt;vg</span><span class="na">-timeDisplay</span><span class="nt">&gt;</span>{{ currentTime }}<span class="err">&lt;</span>/vg-timeDisplay&gt;
+        <span class="nt">&lt;vg</span><span class="na">-scrubBar</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;vg</span><span class="na">-scrubbarcurrenttime</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-scrubbarcurrenttime&gt;
+        <span class="err">&lt;</span>/vg-scrubBar&gt;
+        <span class="nt">&lt;vg</span><span class="na">-timeDisplay</span><span class="nt">&gt;</span>{{ totalTime }}<span class="err">&lt;</span>/vg-timeDisplay&gt;
+        <span class="nt">&lt;vg</span><span class="na">-volume</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;vg</span><span class="na">-mutebutton</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-mutebutton&gt;
+            <span class="nt">&lt;vg</span><span class="na">-volumebar</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-volumebar&gt;
+        <span class="err">&lt;</span>/vg-volume&gt;
+        <span class="nt">&lt;vg</span><span class="na">-fullscreenButton</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-fullscreenButton&gt;
+    <span class="err">&lt;</span>/vg-controls&gt;
+
+    <span class="nt">&lt;video</span> <span class="na">class=</span><span class="s">'videoPlayer'</span> <span class="na">preload=</span><span class="s">'none'</span> <span class="na">vg-poster=</span><span class="s">'{{ data.poster }}'</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;source</span> <span class="na">ng-repeat=</span><span class="s">'media in data.media'</span> <span class="na">ng-src=</span><span class="s">'{{ media.url }}'</span> <span class="na">type=</span><span class="s">'{{ media.type }}'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/video&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+<p>Because AngularJS is so cool, you could just remove or add any directive and the player should work as expected. For example, you could remove <code>&lt;vg-timeDisplay&gt;{{ currentTime }}&lt;/vg-timeDisplay&gt;</code> and change <code>&lt;vg-timeDisplay&gt;{{ totalTime }}&lt;/vg-timeDisplay&gt;</code> for <code>&lt;vg-timeDisplay&gt;{{ currentTime }} / {{ totalTime }}&lt;/vg-timeDisplay&gt;</code> to change your time display component.</p>
+
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">videogular</span> <span class="na">vg-width=</span><span class="s">"400"</span> <span class="na">vg-height=</span><span class="s">"300"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;vg</span><span class="na">-buffering</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-buffering&gt;
+    <span class="nt">&lt;vg</span><span class="na">-overlayPlay</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-overlayPlay&gt;
+
+    <span class="nt">&lt;vg</span><span class="na">-controls</span> <span class="na">vg-autohide=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;vg</span><span class="na">-playpauseButton</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-playpauseButton&gt;
+        <span class="nt">&lt;vg</span><span class="na">-scrubBar</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;vg</span><span class="na">-scrubbarcurrenttime</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-scrubbarcurrenttime&gt;
+        <span class="err">&lt;</span>/vg-scrubBar&gt;
+        <span class="nt">&lt;vg</span><span class="na">-timeDisplay</span><span class="nt">&gt;</span>{{ currentTime }} / {{ totalTime }}<span class="err">&lt;</span>/vg-timeDisplay&gt;
+        <span class="nt">&lt;vg</span><span class="na">-volume</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;vg</span><span class="na">-mutebutton</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-mutebutton&gt;
+            <span class="nt">&lt;vg</span><span class="na">-volumebar</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-volumebar&gt;
+        <span class="err">&lt;</span>/vg-volume&gt;
+        <span class="nt">&lt;vg</span><span class="na">-fullscreenButton</span><span class="nt">&gt;</span><span class="err">&lt;</span>/vg-fullscreenButton&gt;
+    <span class="err">&lt;</span>/vg-controls&gt;
+
+    <span class="nt">&lt;video</span> <span class="na">class=</span><span class="s">'videoPlayer'</span> <span class="na">preload=</span><span class="s">'none'</span> <span class="na">vg-poster=</span><span class="s">'{{ data.poster }}'</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;source</span> <span class="na">ng-repeat=</span><span class="s">'media in data.media'</span> <span class="na">ng-src=</span><span class="s">'{{ media.url }}'</span> <span class="na">type=</span><span class="s">'{{ media.type }}'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/video&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+<p>In the same way you could remove <code>&lt;vg-volumebar&gt;&lt;/vg-volumebar&gt;</code> and leave only <code>&lt;vg-mutebutton&gt;&lt;/vg-mutebutton&gt;</code> and so on. That's an easy way to build your own Videogular layout.</p>
+
+<p>Additionally, you will need to add your module plugins and videogular to your application:</p>
+
+<div class="highlight"><pre><span class="s2">"use strict"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">videogularApp</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">"videogularApp"</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">"controllers"</span><span class="p">,</span>
+
+        <span class="s2">"com.2fdevs.videogular"</span><span class="p">,</span>
+        <span class="s2">"com.2fdevs.videogular.plugins.controlbar"</span><span class="p">,</span>
+        <span class="s2">"com.2fdevs.videogular.plugins.overlayplay"</span><span class="p">,</span>
+        <span class="s2">"com.2fdevs.videogular.plugins.buffering"</span><span class="p">,</span>
+        <span class="s2">"com.2fdevs.videogular.plugins.myPlugin"</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+
+<p>And that's all :)</p>
+
+<h2>
+<a name="themes" class="anchor" href="#themes"><span class="octicon octicon-link"></span></a>Themes</h2>
+
+<p>Videogular supports a very simple theme system through vg-theme directive and CSS styles.</p>
+
+<p>To set your theme just set vg-theme attribute with a CSS url or a scope variable. If you pass a scope variable Videogular creates a binding and you just could change your theme on the fly.</p>
+
+<p>Setting a binding through a scope variable:</p>
+
+<div class="highlight"><pre><span class="c">&lt;!-- </span>
+<span class="c">"theme" is a scope variable with a value like "themes/default/videogular.css"</span>
+<span class="c">--&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">videogular</span> <span class="na">vg-width=</span><span class="s">"400"</span> <span class="na">vg-height=</span><span class="s">"300"</span> <span class="na">vg-theme=</span><span class="s">"theme"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Videogular plugins and video tag... --&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+<p>Setting a CSS theme:</p>
+
+<div class="highlight"><pre><span class="c">&lt;!-- </span>
+<span class="c">If you pass a String with ".css" inside it loads and injects the CSS on the HTML</span>
+<span class="c">--&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">videogular</span> <span class="na">vg-width=</span><span class="s">"400"</span> <span class="na">vg-height=</span><span class="s">"300"</span> <span class="na">vg-theme=</span><span class="s">"themes/default/videogular.css"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Videogular plugins and video tag... --&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+<p>To change and create your own themes should be very easy just modifying <code>examples/css/videogular.css</code> file.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-41473887-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
